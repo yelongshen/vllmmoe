@@ -131,7 +131,7 @@ class MixtralMoE(nn.Module):
                                         self.w2s,
                                         router_logits,
                                         self.top_k,
-                                        renormalize=True,
+                                        renormalize=False,
                                         inplace=True)
 
         if self.tp_size > 1:
