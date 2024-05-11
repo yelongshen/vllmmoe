@@ -460,6 +460,9 @@ def fused_moe(
     ]
     M, _ = hidden_states.shape
     E, N, _ = w1.shape
+
+    routing_weights = torch.softmax(gating_output, dim=-1, dtype=torch.float32)
+    
     topk_weights, topk_ids = sparsemixer(routing_weights, top_k, 0.01, training)
     
     if override_config:
